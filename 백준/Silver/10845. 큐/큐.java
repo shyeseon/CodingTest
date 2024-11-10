@@ -3,55 +3,57 @@ import java.io.*;
 public class Main {
 
 	public static void main(String[] args) throws Exception{
-		ArrayDeque<Integer> que = new ArrayDeque<>();
-		
+		Queue<Integer> que = new LinkedList<>();	
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(bf.readLine());
 		int n = Integer.parseInt(st.nextToken());
 
+		int last =0;
+		StringBuilder sb = new StringBuilder();
 		for(int i=0;i<n;i++) {
 			st = new StringTokenizer(bf.readLine());
 			String what = st.nextToken();
+			
 			switch(what) {
 			case "push":
-				que.add(Integer.parseInt(st.nextToken()));
+				last= Integer.parseInt(st.nextToken());
+				que.add(last);
 				break;
 			case "pop":
 				if(!que.isEmpty()) {
-					int q =que.remove();
-					System.out.println(q);
+					sb.append(que.poll()).append("\n");
 				}else {
-					System.out.println("-1");
+					sb.append("-1").append("\n");
 				}
 				break;
 			case "size":
-				System.out.println(que.size());
+				sb.append(que.size()).append("\n");
 				break;
 			case "empty":
 				if(que.isEmpty()) {
-					System.out.println("1");
+					sb.append("1").append("\n");
 				}else {
-					System.out.println("0");
+					sb.append("0").append("\n");
 				}
 				break;
 			case "front":
 				if(!que.isEmpty()) {
-					System.out.println(que.peek());
+					sb.append(que.peek()).append("\n");
 				}else {
-					System.out.println("-1");
+					sb.append("-1").append("\n");
 				}
 				break;
 			case "back":
 				if(!que.isEmpty()) {
-					System.out.println(que.getLast());
+					sb.append(last).append("\n");
 				}else {
-					System.out.println("-1");
+					sb.append("-1").append("\n");
 				}
 				break;
 			}
 			
 		}
-		
+		System.out.println(sb);
 
 	}
 
